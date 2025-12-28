@@ -48,6 +48,7 @@ class IS::Loggers::TemplateFormatter
     @renderer.result_with_hash vars
   rescue => e
     warn msg2str(e), uplevel: 1
+    "#{severity} #{datetime} #{program} #{message}"
   end
 
   private
@@ -67,6 +68,9 @@ class IS::Loggers::TemplateFormatter
       content = template
     end
     [ content, data ]
+  rescue => e
+    warn msg2str(e), uplevel: 2
+    [ nil, nil ]
   end
 
   def get_level_key severity
@@ -87,7 +91,7 @@ class IS::Loggers::TemplateFormatter
   end
 
   def get_icons_hash
-    if Hash === @data && Hash === @data[:icons]
+    if ::Hash === @data && ::Hash === @data[:icons]
       DEFAULT_ICONS.merge(@data[:icons]).freeze
     else
       DEFAULT_ICONS

@@ -10,18 +10,20 @@ end
 
 module IS::Loggers::Shortcuts
 
-  CONSOLE_TEMPLATE = File.join __dir__, '..', 'share', 'console-log.erb'
-  TELEGRAM_TEMPLATE = File.join __dir__, '..', 'share', 'console-log.erb'
+  CONSOLE_TEMPLATE  = File.join __dir__, '..', 'share', 'console-log.erb'
+  TELEGRAM_TEMPLATE = File.join __dir__, '..', 'share', 'telegram-log.erb'
 
   class << self
 
     def create_multilogger # TODO: args and implementation
     end
 
-    def create_telegram_formatter # TODO: args and implementation
+    def create_telegram_formatter
+      IL::create_template_formatter_from_file TELEGRAM_TEMPLATE
     end
 
-    def create_console_formatter # TODO: args and implementation
+    def create_console_formatter 
+      IL::create_template_formatter_from_file CONSOLE_TEMPLATE
     end
 
     def create_telegram_logger # TODO: args and implementation
