@@ -10,8 +10,8 @@ end
 
 module IS::Loggers::Shortcuts
 
-  CONSOLE_TEMPLATE  = File.join __dir__, '..', 'share', 'console-log.erb'
-  TELEGRAM_TEMPLATE = File.join __dir__, '..', 'share', 'telegram-log.erb'
+  CONSOLE_TEMPLATE  = File.join __dir__, '../..', 'share/is-loggers/console-log.erb'
+  TELEGRAM_TEMPLATE = File.join __dir__, '../..', 'share/is-loggers/telegram-log.erb'
 
   class << self
 
